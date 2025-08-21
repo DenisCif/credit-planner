@@ -1,69 +1,82 @@
-# React + TypeScript + Vite
+# Planner de Créditos Windsurf
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Aplicación web simple desarrollada en **React + Vite + Tailwind + Recharts** para calcular y visualizar cómo administrar 500 créditos mensuales en Windsurf (o cualquier presupuesto similar). Permite ingresar parámetros y muestra métricas diarias, acumulados y una proyección gráfica.
 
-Currently, two official plugins are available:
+## Características
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- Cálculo automático del promedio de créditos por día.
+- Comparación entre lo que deberías haber gastado y lo que realmente llevas.
+- Indicador si vas en línea con tu plan o necesitas ajustar.
+- Recomendaciones para cuánto gastar hoy:
+  - Para seguir tu plan diario.
+  - Para terminar exactamente en cero al final del mes.
+  - Máximo posible manteniendo tu plan (usando ahorros acumulados).
+- Gráfica interactiva con proyección de créditos restantes.
 
-## Expanding the ESLint configuration
+## Captura de pantalla
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+![Captura de pantalla](./public/capturas/demo.png)
 
-```js
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
 
-      // Remove tseslint.configs.recommended and replace with this
-      ...tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      ...tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      ...tseslint.configs.stylisticTypeChecked,
+## Tecnologías utilizadas
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+- [React](https://react.dev/) con [Vite](https://vitejs.dev/)
+- [TailwindCSS](https://tailwindcss.com/) para estilos
+- [Recharts](https://recharts.org/) para la visualización gráfica
+
+## Requisitos
+
+- Node.js 18 o superior
+- npm 9 o superior
+
+## Instalación y uso
+
+Clonar el repositorio e instalar dependencias:
+
+```bash
+npm install
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+Ejecutar en desarrollo:
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```bash
+npm run dev
 ```
+
+Abrir en el navegador:
+
+```
+http://localhost:5173
+```
+
+Construir para producción:
+
+```bash
+npm run build
+```
+
+Previsualizar el build:
+
+```bash
+npm run preview
+```
+
+## Estructura principal
+
+- `src/App.tsx` → Componente principal con lógica y UI.
+- `src/index.css` → Incluye las directivas de Tailwind.
+- `tailwind.config.js` → Configuración de Tailwind.
+
+## Despliegue
+
+Puedes desplegar el build (`/dist`) en:
+- [Vercel](https://vercel.com/)
+- [Netlify](https://www.netlify.com/)
+- Cualquier servidor con Apache/Nginx
+- Contenedor Docker con Nginx
+
+## Próximas mejoras
+
+- Guardar configuración en LocalStorage.
+- Calcular automáticamente días restantes según la fecha actual.
+- Modos especiales (fin de semana, ahorro flexible, etc.).
